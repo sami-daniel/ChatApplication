@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ChatApplication.Shared.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatApplication.Data
 {
@@ -7,5 +8,7 @@ namespace ChatApplication.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+
+        public DbSet<Message> Messages { get; set; } = null!;
     }
 }
