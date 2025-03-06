@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35818.85 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Producer", "ChatApplication\ChatApplication.Producer.csproj", "{2EFA5B02-7B12-4B8C-B6A5-2374D0DF1FCE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Producer", "ChatApplication.Producer\ChatApplication.Producer.csproj", "{2EFA5B02-7B12-4B8C-B6A5-2374D0DF1FCE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Consumer", "ChatApplication.Consumer\ChatApplication.Consumer.csproj", "{A955A2A2-2CC3-4237-824B-85B794CE50AA}"
 EndProject
