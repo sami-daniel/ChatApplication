@@ -12,4 +12,8 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="7.1.1" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ChatApplication.Entities\ChatApplication.Shared.csproj" />
+  </ItemGroup>
 </Project>
