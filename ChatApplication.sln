@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35818.85 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication", "ChatApplication\ChatApplication.csproj", "{2EFA5B02-7B12-4B8C-B6A5-2374D0DF1FCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Consumer", "ChatApplication.Consumer\ChatApplication.Consumer.csproj", "{A955A2A2-2CC3-4237-824B-85B794CE50AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2EFA5B02-7B12-4B8C-B6A5-2374D0DF1FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EFA5B02-7B12-4B8C-B6A5-2374D0DF1FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2EFA5B02-7B12-4B8C-B6A5-2374D0DF1FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A955A2A2-2CC3-4237-824B-85B794CE50AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A955A2A2-2CC3-4237-824B-85B794CE50AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A955A2A2-2CC3-4237-824B-85B794CE50AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A955A2A2-2CC3-4237-824B-85B794CE50AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
