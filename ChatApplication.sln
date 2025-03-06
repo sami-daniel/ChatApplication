@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication", "ChatAppl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Consumer", "ChatApplication.Consumer\ChatApplication.Consumer.csproj", "{A955A2A2-2CC3-4237-824B-85B794CE50AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Entities", "ChatApplication.Entities\ChatApplication.Entities.csproj", "{A2CEF0D4-629D-46C2-93F6-991616F19C63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatApplication.Shared", "ChatApplication.Entities\ChatApplication.Shared.csproj", "{A2CEF0D4-629D-46C2-93F6-991616F19C63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

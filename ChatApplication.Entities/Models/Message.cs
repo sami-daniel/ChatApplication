@@ -1,4 +1,4 @@
-﻿namespace ChatApplication.Entities
+﻿namespace ChatApplication.Shared.Models
 {
     public class Message
     {
