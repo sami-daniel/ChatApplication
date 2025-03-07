@@ -1,0 +1,4 @@
+#!/bin/bash
+dotnet "./ChatApplication.Producer/net9.0/ChatApplication.Producer.dll" &
+
+dotnet "./ChatApplication.Consumer/net9.0/ChatApplication.Consumer.dll" &

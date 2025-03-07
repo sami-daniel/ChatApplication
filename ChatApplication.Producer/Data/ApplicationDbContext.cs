@@ -1,7 +1,7 @@
 ﻿using ChatApplication.Shared.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ChatApplication.Data
+namespace ChatApplication.Producer.Data
 {
     public class ApplicationDbContext : DbContext
     {
