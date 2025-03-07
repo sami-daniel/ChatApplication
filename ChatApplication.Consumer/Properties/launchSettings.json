@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "ChatApplication.Consumer": {
-      "commandName": "Project",
-      "commandLineArgs": "server=localhost;uid=root;pwd=;database=chatapplicationdatabase;port=3306"
-    }
-  }
-}

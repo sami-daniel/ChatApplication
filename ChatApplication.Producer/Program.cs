@@ -15,16 +15,7 @@ namespace ChatApplication.Producer
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var connectionString = "";
-
-            try
-            {
-                connectionString = args[0];
-            }
-            catch
-            {
-                throw new ArgumentNullException("Connection string is required. Pass it as an argument!");
-            }
+            var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING") ?? throw new ArgumentException("MYSQL_CONNECTION_STRING is required");
 
             builder.Services.AddDbContext<ApplicationDbContext>(opt =>
             {
