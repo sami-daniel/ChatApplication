@@ -3,7 +3,7 @@ services:
     container_name: chatappconfig_container
     image: bash
     volumes:
-      - ./configdatabase:/app/configdatabase
+      - ./configdatabase.sh:/app/configdatabase.sh
     entrypoint: ["bash", "-c", "chmod +x ./app/configdatabase.sh && ./app/configdatabase.sh"]
   
   chatappmysqldb:
