@@ -34,7 +34,10 @@ namespace ChatApplication.Producer
             builder.Services.AddDbContext<ApplicationDbContext>(opt =>
             {
 #if DEBUG
+                Console.WriteLine("Sensitive database commands activated!");
                 opt.EnableSensitiveDataLogging();
+#else
+                Console.WriteLine("Sensitive database commands deactivated!");
 #endif
                 opt.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
@@ -48,7 +51,7 @@ namespace ChatApplication.Producer
             builder.Services.AddSignalR();
 
             var app = builder.Build();
-
+            
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
