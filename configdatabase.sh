@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo 'ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '98sf7d4pj';' >> init.sql
 echo 'FLUSH PRIVILEGES' >> init.sql;
 
