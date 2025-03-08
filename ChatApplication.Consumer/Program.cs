@@ -44,4 +44,8 @@ consumer.ReceivedAsync += async (model, ea) =>
 
 await channel.BasicConsumeAsync(queue: "chatentries", autoAck: true, consumer: consumer);
 
-Console.ReadLine();
+// TODO: Search for better solution to keep the process alive
+while (true) 
+{
+	await Task.Delay(1000);	
+}
