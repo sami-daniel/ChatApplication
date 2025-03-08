@@ -9,7 +9,6 @@ services:
   chatappmysqldb:
     container_name: chatappmysqldb_container
     image: mysql
-    restart: always
     ports:
       - "${MYSQL_PORT:?error}:3306"
     environment:
@@ -42,7 +41,6 @@ services:
             condition: service_healthy
     networks:
       - chatapp_mysql_network
-    restart: always
   
   chatappfrontendserver:
     container_name: chatapp_frontend_server_container
