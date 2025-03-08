@@ -1,0 +1,35 @@
+services:
+  chatappmysqldb:
+    container_name: chatappmysqldb_container
+    image: mysql
+    restart: always
+    ports:
+      - "7070:3306"
+    environment:
+    -  MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - chatapp_mysql_network
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 20s
+        retries: 10
+      
+  chatapp:
+    container_name: chatapp_container
+    image: chatapp
+    ports:
+        - "7071:8080"
+    environment:
+      - MYSQL_CONNECTION_STRING=server=chatappmysqldb;uid=root;pwd=root;database=chatappdatabase;
+    depends_on:
+      chatappmysqldb:
+            condition: service_healthy
+    networks:
+      - chatapp_mysql_network
+
+networks:
+ chatapp_mysql_network:
+    driver: bridge
