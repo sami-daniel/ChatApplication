@@ -42,6 +42,16 @@ services:
     networks:
       - chatapp_mysql_network
     restart: always
+  
+  chatappfrontendserver:
+    container_name: chatapp_frontend_server_container
+    image: nginx:alpine
+    ports:
+      - "${CHAT_APP_FRONTEND_SERVER_PORT:?error}:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html/
+    depends_on:
+      - chatapp
 
 networks:
  chatapp_mysql_network:
