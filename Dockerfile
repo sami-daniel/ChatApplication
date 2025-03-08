@@ -3,11 +3,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /chatapp/
 
-ENV ASPNETCORE_URLS=http://+:5000
-
-EXPOSE 5000
-
-
 # restore projects
 COPY *.sln .
 COPY ChatApplication.Producer/*.csproj ./ChatApplication.Producer/
