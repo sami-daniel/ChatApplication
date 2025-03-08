@@ -22,15 +22,18 @@ namespace ChatApplication.Producer
 
             var connectionString = $"server={mySqlHost};port={mySqlPort};database={databaseName};user=root;password={mySqlRootPassword};";
 
-            builder.Services.AddCors(options =>
+            builder.Services.AddCors(policy =>
             {
-                options.AddDefaultPolicy(policy =>
+                var frontendHost = Environment.GetEnvironmentVariable("FRONTEND_HOST");
+
+                policy.AddDefaultPolicy(builder =>
                 {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod() 
-                          .AllowAnyHeader(); 
+                    builder.WithOrigins(frontendHost)
+                           .WithMethods("GET", "POST")
+                           .AllowAnyHeader();
                 });
             });
+
             builder.Services.AddDbContext<ApplicationDbContext>(opt =>
             {
 #if DEBUG
