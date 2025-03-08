@@ -1,4 +1,5 @@
 #!/bin/bash
 dotnet "./ChatApplication.Producer/net9.0/ChatApplication.Producer.dll" &
-
-dotnet "./ChatApplication.Consumer/net9.0/ChatApplication.Consumer.dll" &
+dotnet "./ChatApplication.Consumer/net9.0/ChatApplication.Consumer.dll"
+# just keep the bash waiting for process completion (that will never happen), 
+# so it wont kill the app 
