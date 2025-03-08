@@ -1,7 +1,8 @@
 services:
   config:
+    container_name: chatapp_configcontainer
     image: alpine
-    entrypoint: ["/bin/bash", "-c", "chmod +x ./configdatabase && ./configdatabase"]
+    entrypoint: ["/bin/sh", "-c", "chmod +x ./configdatabase && ./configdatabase"]
   
   chatappmysqldb:
     container_name: chatappmysqldb_container
