@@ -36,6 +36,7 @@ services:
       - MYSQL_HOST=chatappmysqldb
       - DATABASE_NAME=${DATABASE_NAME}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - FRONTEND_HOST=chatappfrontendserver
     depends_on:
       chatappmysqldb:
             condition: service_healthy
