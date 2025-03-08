@@ -69,6 +69,8 @@ namespace ChatApplication.Producer
                 });
             }
 
+            app.UseCors();
+
             app.MapHub<ChatHub>("/chat");
 
             var factory = new ConnectionFactory
@@ -103,7 +105,6 @@ namespace ChatApplication.Producer
             .WithName("CreateMessage")
             .WithTags("Messages");
 
-            app.UseCors();
 
             app.Run();
         }
