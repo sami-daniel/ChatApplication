@@ -30,7 +30,7 @@ services:
         - "${CHAT_APP_PORT:?error}:8080"
     environment:
       - MYSQL_PORT=${MYSQL_PORT}
-      - MYSQL_ADDR=chatappmysqldb
+      - MYSQL_HOST=chatappmysqldb
       - DATABASE_NAME=${DATABASE_NAME}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     depends_on:
