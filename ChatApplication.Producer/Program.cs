@@ -88,6 +88,7 @@ namespace ChatApplication.Producer
             app.UseCors(builder =>
             {
                 builder
+                    .AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
