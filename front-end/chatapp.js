@@ -31,7 +31,7 @@ $(document).ready(function () {
         }
     });
     
-    const connection = new signalR.HubConnectionBuilder().withUrl("http://192.168.2.100:8080/chat").build();
+    const connection = new signalR.HubConnectionBuilder().withUrl("http://localhost:8080/chat").build();
 
     connection.on("/chat", function (user, message) {
         const $responseElement = $('<div>').addClass('message other').text(`${user}: ${message}`);
