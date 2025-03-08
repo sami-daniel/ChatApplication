@@ -4,7 +4,10 @@ services:
     image: bash
     volumes:
       - ./configdatabase.sh:/app/configdatabase.sh
+      - .:/host
     entrypoint: ["bash", "-c", "chmod +x ./app/configdatabase.sh && ./app/configdatabase.sh"]
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
   
   chatappmysqldb:
     container_name: chatappmysqldb_container
