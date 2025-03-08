@@ -52,6 +52,10 @@ services:
       - ./frontend:/usr/share/nginx/html/
     depends_on:
       - chatapp
+    environment:
+      - FRONTEND_HOST=chatappfrontendserver
+    networks:
+      - chatapp_mysql_network
 
 networks:
  chatapp_mysql_network:
