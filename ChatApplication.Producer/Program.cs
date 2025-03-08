@@ -15,16 +15,20 @@ namespace ChatApplication.Producer
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var mySqlPort = Environment.GetEnvironmentVariable("MYSQL_PORT");
-            var mySqlHost = Environment.GetEnvironmentVariable("MYSQL_HOST");
-            var databaseName = Environment.GetEnvironmentVariable("DATABASE_NAME");
-            var mySqlRootPassword = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
+            var nullEnvException = (string nullEnvVarName) => {
+                return new ArgumentNullException(nullEnvVarName, $"Environment variable {nullEnvVarName} is not set!");
+            };
+
+            var mySqlPort = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? throw nullEnvException("MYSQL_PORT");
+            var mySqlHost = Environment.GetEnvironmentVariable("MYSQL_HOST") ?? throw nullEnvException("MYSQL_HOST");
+            var databaseName = Environment.GetEnvironmentVariable("DATABASE_NAME") ?? throw nullEnvException("DATABASE_NAME");
+            var mySqlRootPassword = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD") ?? throw nullEnvException("MYSQL_ROOT_PASSWORD");
 
             var connectionString = $"server={mySqlHost};port={mySqlPort};database={databaseName};user=root;password={mySqlRootPassword};";
 
             builder.Services.AddCors(policy =>
             {
-                var frontendHost = Environment.GetEnvironmentVariable("FRONTEND_HOST");
+                var frontendHost = Environment.GetEnvironmentVariable("FRONTEND_HOST") ?? throw nullEnvException("FRONTEND_HOST");
 
                 policy.AddDefaultPolicy(builder =>
                 {
