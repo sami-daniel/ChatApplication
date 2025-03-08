@@ -6,7 +6,13 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 
-var mySqlPort =  MYSQL_PORT
+var mySqlPort =  Environment.GetEnvironmentVariable("MYSQL_PORT");
+var mySqlHost = Environment.GetEnvironmentVariable("MYSQL_HOST");
+var databaseName = Environment.GetEnvironmentVariable("DATABASE_NAME");
+var mySqlRootPassword = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
+
+var connectionString = $"server={mySqlHost};port={mySqlPort};database={databaseName};user=root;password={mySqlRootPassword};";
+
 var dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
     .Options;

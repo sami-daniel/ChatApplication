@@ -15,7 +15,13 @@ namespace ChatApplication.Producer
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING") ?? throw new ArgumentException("MYSQL_CONNECTION_STRING is required");
+            var mySqlPort = Environment.GetEnvironmentVariable("MYSQL_PORT");
+            var mySqlHost = Environment.GetEnvironmentVariable("MYSQL_HOST");
+            var databaseName = Environment.GetEnvironmentVariable("DATABASE_NAME");
+            var mySqlRootPassword = Environment.GetEnvironmentVariable("MYSQL_ROOT_PASSWORD");
+
+            var connectionString = $"server={mySqlHost};port={mySqlPort};database={databaseName};user=root;password={mySqlRootPassword};";
+
 
             builder.Services.AddDbContext<ApplicationDbContext>(opt =>
             {
