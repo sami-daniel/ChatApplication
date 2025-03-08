@@ -22,7 +22,7 @@ namespace ChatApplication.Producer
 
             var connectionString = $"server={mySqlHost};port={mySqlPort};database={databaseName};user=root;password={mySqlRootPassword};";
 
-
+            builder.Services.AddCors();
             builder.Services.AddDbContext<ApplicationDbContext>(opt =>
             {
 #if DEBUG
@@ -84,6 +84,14 @@ namespace ChatApplication.Producer
             })
             .WithName("CreateMessage")
             .WithTags("Messages");
+
+            app.UseCors(builder =>
+            {
+                builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
 
             app.Run();
         }
