@@ -1,4 +1,5 @@
 using ChatApplication.Producer.Data;
+using ChatApplication.Producer.Helpers;
 using ChatApplication.Producer.SignalR;
 using ChatApplication.Shared.Models;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +12,11 @@ namespace ChatApplication.Producer
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddControllers();
 
             var nullEnvException = (string nullEnvVarName) => {
                 return new ArgumentNullException(nullEnvVarName, $"Environment variable {nullEnvVarName} is not set!");
@@ -57,6 +60,8 @@ namespace ChatApplication.Producer
 
             builder.Services.AddSignalR();
 
+            builder.Services.AddSingleton<MessageSender>();
+
             var app = builder.Build();
             
             if (app.Environment.IsDevelopment())
@@ -71,40 +76,13 @@ namespace ChatApplication.Producer
 
             app.UseCors();
 
+            app.UseRouting();
+
+            app.UseStaticFiles();
+
             app.MapHub<ChatHub>("/chat");
 
-            var factory = new ConnectionFactory
-            {
-                HostName = "192.168.2.100",
-                Port = 4000,
-                UserName = "root",
-                Password = "root",
-            };
-
-            using var connection = await factory.CreateConnectionAsync();
-            using var channel = await connection.CreateChannelAsync();
-            await channel.QueueDeclareAsync(queue: "chatentries", durable: true, exclusive: false, autoDelete: false, arguments: null);
-
             Console.WriteLine("ChatApplication is ready for send messages!");
-
-            app.MapGet("/messages", async (ApplicationDbContext db) => await db.Messages.ToListAsync())
-            .WithName("GetAllMessages")
-            .WithTags("Messages");
-
-            app.MapPost("/messages", async (ApplicationDbContext db, Message message) =>
-            {
-                var messageJson = JsonSerializer.Serialize(message);
-                var body = Encoding.UTF8.GetBytes(messageJson);
-
-                await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "chatentries", body: body);
-                
-                Console.WriteLine($"Sent message {message.MessageContent}");
-                
-                return Results.Created();
-            })
-            .WithName("CreateMessage")
-            .WithTags("Messages");
-
 
             app.Run();
         }
