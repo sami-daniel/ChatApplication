@@ -50,7 +50,7 @@ services:
     ports:
       - "${CHAT_APP_FRONTEND_SERVER_PORT:?error}:80"
     volumes:
-      - ./frontend:/usr/share/nginx/html/
+      - ./frontend:/usr/share/nginx/html
     depends_on:
       - chatapp
     environment:
