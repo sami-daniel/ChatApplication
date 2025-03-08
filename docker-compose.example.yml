@@ -39,6 +39,7 @@ services:
             condition: service_healthy
     networks:
       - chatapp_mysql_network
+    restart: always
 
 networks:
  chatapp_mysql_network:
