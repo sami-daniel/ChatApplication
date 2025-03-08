@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     const $popup = $('#popup');
     const $chatContainer = $('#chat');
     const $usernameInput = $('#username');
@@ -6,7 +7,9 @@ $(document).ready(function () {
     const $chatMessages = $('#chatMessages');
     const $messageInput = $('#messageInput');
     const $sendMessageButton = $('#sendMessage');
-
+    
+    $startChatButton.prop('disabled', true); // disabled until connected
+    
     let username = localStorage.getItem('uname');
     
     if (!username) {
@@ -16,6 +19,7 @@ $(document).ready(function () {
         $chatContainer.css('display', 'flex');
     }
 
+    
     $startChatButton.on('click', function () {
         username = $usernameInput.val().trim();
         localStorage.setItem('uname', username);
@@ -25,6 +29,20 @@ $(document).ready(function () {
         } else {
             alert('Por favor, insira seu nome.');
         }
+    });
+    
+    const connection = new signalR.HubConnectionBuilder().withUrl("http://192.168.2.100:8080/chat").build();
+
+    connection.on("/chat", function (user, message) {
+        const $responseElement = $('<div>').addClass('message other').text(`${user}: ${message}`);
+        $chatMessages.append($responseElement);
+        $chatMessages.scrollTop($chatMessages[0].scrollHeight);
+    });
+
+    connection.start().then(function () {
+        $startChatButton.prop('disabled', false); // disabled until connected
+    }).catch(function (err) {
+        return console.error(err);
     });
 
     $sendMessageButton.on('click', function () {
