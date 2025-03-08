@@ -6,8 +6,7 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
 
-var connectionString = Environment.GetEnvironmentVariable("MYSQL_CONNECTION_STRING") ?? throw new ArgumentException("MYSQL_CONNECTION_STRING is required");
-
+var mySqlPort =  MYSQL_PORT
 var dbContextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
     .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
     .Options;
