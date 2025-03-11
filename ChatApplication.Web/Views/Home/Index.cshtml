@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Simples</title>
+    <link rel="stylesheet" href="~/style.css">
+</head>
+<body>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Bem-vindo ao Chat!</h2>
+            <input type="text" id="username" placeholder="Digite seu nome">
+            <button id="startChat">Entrar</button>
+        </div>
+    </div>
+
+    <div id="chat" class="chat-container">
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Digite sua mensagem...">
+            <button id="sendMessage">Enviar</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.js"></script>
+    <script src="~/chatapp.js"></script>
+</body>
+</html>

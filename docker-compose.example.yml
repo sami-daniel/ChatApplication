@@ -1,0 +1,6 @@
+services:
+  chatapp:
+    container_name: chatapp_container
+    image: chatapp
+    ports:
+        - "${CHAT_APP_PORT:?error}:8080"

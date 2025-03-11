@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dotnet "./ChatApplication.Web/net9.0/ChatApplication.Web.dll"
