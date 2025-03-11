@@ -11,6 +11,13 @@ Enter in the project folder:
 cd ChatApplication
 ```
 
+You can simple run it with:
+``` bash
+dotnet build -c Release
+dotnet run ChatApplication.Web/bin/Release/net8.0/ChatApplication.Web.dll
+```
+or use Docker to daemonize (turn to daemon) it.
+
 First, generate the appropriatte Docker image from application. If you have the Make tool installed on your machine, you can simple run ```make``` to generate 
 an image called 'chatapp':
 
