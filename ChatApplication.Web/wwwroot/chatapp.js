@@ -32,7 +32,7 @@
     });
 
     $.each(messages, function (_, e) {
-        let { messageContent, _, messageSender } = e;
+        let { messageContent, messageDate, messageSender } = e;
 
         if (messageSender != username) {
             const $responseElement = $('<div>').addClass('message other').text(`${messageSender}: ${messageContent}`);
