@@ -366,4 +366,4 @@ FodyWeavers.xsd
 
 docker-compose.yml
 
-**/*.db
+**/*.db*
