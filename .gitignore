@@ -365,3 +365,5 @@ FodyWeavers.xsd
 .env
 
 docker-compose.yml
+**/chat.db
+**/chat.db*
